@@ -1,0 +1,206 @@
+{
+  "products": {
+    "cart": "ajouter au panier"
+  },
+  "header": {
+    "home": "Accueil",
+    "browse": "Parcourir",
+    "host": "Devenir hôte",
+    "contact": "Contact",
+    "login": "Connexion"
+  },
+  "hero": {
+    "title": "Trouvez votre",
+    "highlight": "refuge parfait",
+        "subtitle": "Découvrez des séjours uniques, des aventures immersives et des expériences inoubliables à travers le monde, soigneusement sélectionnés pour rendre chaque voyage vraiment exceptionnel. Explorez chaque lieu en 3D spectaculaire, vous permettant de le parcourir et de le vivre en ligne avant même d’y être."
+,
+    "destination": "Destination",
+    "placeholderDestination": "Où allez-vous ?",
+    "arrival": "Arrivée",
+    "departure": "Départ",
+    "guests": "Voyageurs",
+    "placeholderGuests": "Combien ?",
+    "search": "Rechercher",
+    "button":"Voir plus de propriétés"
+  },
+  "howItWorks": {
+    "title": "Comment ça marche",
+    "subtitle": "Réservez votre séjour parfait en quelques étapes simples",
+    "steps": [
+      {
+        "title": "Recherchez",
+        "description": "Explorez des milliers de logements uniques dans le monde entier. Filtrez par prix, équipements et localisation pour trouver votre séjour idéal.",
+        "img": "https://images.pexels.com/photos/261388/pexels-photo-261388.jpeg"
+      },
+      {
+        "title": "Réservez",
+        "description": "Réservez instantanément ou contactez l'hôte. Profitez de notre système de paiement sécurisé et de notre protection complète.",
+        "img": "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg"
+      },
+      {
+        "title": "Profitez",
+        "description": "Vivez des expériences authentiques et créez des souvenirs inoubliables dans votre nouveau chez-vous temporaire.",
+        "img": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg"
+      },
+      {
+        "title": "Soyez protégé",
+        "description": "Bénéficiez de notre garantie hôte et de notre support client 24h/24 pour un séjour en toute sérénité.",
+        "img": "https://images.pexels.com/photos/1838554/pexels-photo-1838554.jpeg"
+      }
+    ],
+    "cta": "Simple, rapide et sécurisé"
+  },
+  "hostCTA": {
+    "headerLabel": "Devenez hôte",
+    "title": "Transformez votre espace en\nsource de revenus",
+    "description": "Partagez votre logement avec des voyageurs du monde entier et générez des revenus complémentaires en toute sécurité.",
+    "benefits": [
+      {
+        "title": "Revenus attractifs",
+        "description": "Gagnez jusqu'à 500€ par mois en louant votre logement"
+      },
+      {
+        "title": "Protection garantie",
+        "description": "Assurance complète et vérification des voyageurs"
+      },
+      {
+        "title": "Communauté bienveillante",
+        "description": "Rejoignez des milliers d'hôtes satisfaits"
+      }
+    ],
+    "ctaPrimary": "Devenir hôte",
+    "ctaSecondary": "En savoir plus",
+    "stats": [
+      { "value": "€450", "label": "Revenus moyens/mois" },
+      { "value": "4.8★", "label": "Note moyenne hôtes" },
+      { "value": "10K+", "label": "Hôtes actifs" },
+      { "value": "95%", "label": "Taux de satisfaction" },
+      { "value": "€2M+", "label": "Revenus générés" }
+    ]
+  },
+  "footer": {
+    "brandTitle": "StayNest",
+    "brandDesc": "Votre plateforme de confiance pour des séjours authentiques et des expériences inoubliables partout dans le monde.",
+    "company": {
+      "title": "Entreprise",
+      "links": ["À propos", "Carrières", "Presse", "Blog"]
+    },
+    "support": {
+      "title": "Support",
+      "links": ["Centre d'aide", "Contact", "Sécurité", "Statut"]
+    },
+    "hosting": {
+      "title": "Hébergement",
+      "links": [
+        "Devenir hôte",
+        "Guide de l'hôte",
+        "Assurance hôte",
+        "Ressources"
+      ]
+    },
+    "legal": {
+      "title": "Légal",
+      "links": [
+        "Conditions d'utilisation",
+        "Politique de confidentialité",
+        "Cookies",
+        "Mentions légales"
+      ]
+    },
+    "newsletter": {
+      "title": "Restez informé",
+      "desc": "Recevez nos dernières offres et actualités directement dans votre boîte mail.",
+      "placeholder": "Votre adresse email",
+      "subscribe": "S'abonner"
+    },
+    "rights": "© 2024 StayNest. Tous droits réservés."
+  },
+  "featuredProperties": {
+    "title": "Propriétés en vedette",
+    "subtitle": "Découvrez une sélection de nos logements les plus appréciés",
+    "button": "Voir plus de propriétés"
+  },
+  "testimonials": {
+    "title": "Ce que disent nos voyageurs",
+    "subtitle": "Des milliers de voyageurs nous font confiance pour leurs séjours",
+    "stats": [
+      { "value": "4.9", "label": "Note moyenne" },
+      { "value": "98%", "label": "Clients satisfaits" },
+      { "value": "50K+", "label": "Avis positifs" },
+      { "value": "24/7", "label": "Support client" }
+    ]
+  },
+  "faqData": {
+    "title": "Questions Fréquemment Posées",
+    "subtitle": "Trouvez des réponses aux questions fréquentes sur les réservations, les politiques et les caractéristiques des propriétés. Vous ne trouvez pas ce que vous cherchez ? Contactez notre équipe de support.",
+    "categories": {
+      "booking": "Réservations et Paiements",
+      "cancellation": "Annulations et Remboursements",
+      "property": "Caractéristiques des Propriétés",
+      "policy": "Politiques et Règles",
+      "all": "Toutes les Questions"
+    },
+    "items": [
+      {
+        "id": "booking-1",
+        "category": "booking",
+        "question": "Comment puis-je faire une réservation ?",
+        "answer": "Sélectionnez simplement vos dates, le nombre de voyageurs et cliquez sur « Réserver ». Vous serez guidé à travers notre processus de réservation sécurisé avec confirmation instantanée."
+      },
+      {
+        "id": "booking-2",
+        "category": "booking",
+        "question": "Quels modes de paiement acceptez-vous ?",
+        "answer": "Nous acceptons toutes les principales cartes de crédit (Visa, Mastercard, American Express), PayPal, Apple Pay et Google Pay. Toutes les transactions sont sécurisées avec un cryptage bancaire."
+      },
+      {
+        "id": "booking-3",
+        "category": "booking",
+        "question": "Quand serai-je facturé ?",
+        "answer": "Un petit acompte est facturé immédiatement après la confirmation de la réservation. Le solde restant est automatiquement prélevé 24 heures avant votre date d'arrivée."
+      },
+      {
+        "id": "cancellation-1",
+        "category": "cancellation",
+        "question": "Quelle est votre politique d'annulation ?",
+        "answer": "Annulation gratuite jusqu'à 48 heures avant l'enregistrement. Les annulations dans les 48 heures sont sujettes à une charge de 50 %. Les absences entraînent la facturation complète de la première nuit."
+      },
+      {
+        "id": "cancellation-2",
+        "category": "cancellation",
+        "question": "Comment puis-je annuler ma réservation ?",
+        "answer": "Vous pouvez annuler votre réservation depuis votre tableau de bord ou en contactant notre équipe de support. Les remboursements sont traités sous 5 à 7 jours ouvrables."
+      },
+      {
+        "id": "property-1",
+        "category": "property",
+        "question": "Quelles commodités sont incluses ?",
+        "answer": "Toutes les propriétés incluent Wi-Fi haut débit, cuisine entièrement équipée, linge de qualité, articles de toilette et service de conciergerie 24h/24 et 7j/7. Les commodités spécifiques varient selon la propriété."
+      },
+      {
+        "id": "property-2",
+        "category": "property",
+        "question": "Les animaux sont-ils autorisés ?",
+        "answer": "Les politiques relatives aux animaux varient selon la propriété. Recherchez le badge « animaux acceptés » sur les annonces. Des frais supplémentaires peuvent s'appliquer, généralement 25 à 50 $ par nuit et par animal."
+      },
+      {
+        "id": "property-3",
+        "category": "property",
+        "question": "Y a-t-il un parking disponible ?",
+        "answer": "La plupart des propriétés offrent un parking gratuit. Consultez les détails de la propriété pour des informations spécifiques sur le stationnement, y compris garage, rue ou voiturier."
+      },
+      {
+        "id": "policy-1",
+        "category": "policy",
+        "question": "Quels sont les horaires d'arrivée et de départ ?",
+        "answer": "L'enregistrement standard est à 15h00 et le départ à 11h00. L'enregistrement anticipé et le départ tardif peuvent être disponibles sur demande moyennant des frais supplémentaires."
+      },
+      {
+        "id": "policy-2",
+        "category": "policy",
+        "question": "Exigez-vous un dépôt de garantie ?",
+        "answer": "Un dépôt de garantie remboursable de 200 à 500 $ est retenu sur votre carte pendant votre séjour. Il est libéré sous 3 à 5 jours ouvrables après le départ, sous réserve d'inspection de la propriété."
+      }
+    ]
+  }
+}

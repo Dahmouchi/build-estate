@@ -1,0 +1,273 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Property {
+  id                String       @id @default(cuid())
+  title             String
+  description       String?
+  address           String?
+  bedrooms          Int?
+  beds              Int?
+  bathrooms         Float?
+  totalRooms        Int?
+  maxGuests         Int?
+  type              PropertyType
+  pricePerNight     Float?
+  country           String?
+  city              String?
+  googleMapsUrl    String?                // URL to Google Maps location
+  latitude          Float?
+  longitude         Float?
+  minStayDuration   Int?
+  maxStayDuration   Int?
+  bookingNotice     String?
+  seasonalPricing   Boolean?
+  longStayDiscounts Boolean?
+  images            String[] // Array of image URLs
+
+  aggregateRating   Float?                 // avg rating
+  ratingCount       Int?  
+  checkinTime       String?                // ISO-8601, e.g., "15:00:00+02:00"
+  checkoutTime      String?
+
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  amenities       PropertyAmenity[]
+  services        PropertyService[]
+
+
+  // Relations
+  owner    User      @relation(fields: [ownerId], references: [id])
+  ownerId  String
+  bookings Booking[]
+  reviews  Review[]
+}
+model AmenityCategory {
+  id        String    @id @default(cuid())
+  name      String    // e.g. "Essentiels", "Divertissement", "Extérieur", "Sécurité"
+  amenities Amenity[]
+}
+
+model Amenity {
+  id          String           @id @default(cuid())
+  name        String           // e.g. "Wi-Fi"
+  icon        String?          // e.g. "Wifi"
+  categoryId  String
+  category    AmenityCategory  @relation(fields: [categoryId], references: [id])
+  
+  // Relation with Property
+  properties  PropertyAmenity[]
+}
+model PropertyAmenity {
+  id          String   @id @default(cuid())
+  propertyId  String
+  amenityId   String
+
+  property    Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  amenity     Amenity  @relation(fields: [amenityId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, amenityId]) // Avoid duplicates
+}
+model AdditionalService {
+  id         String   @id @default(cuid())
+  name       String   // e.g. "Petit-déjeuner inclus"
+  icon       String?  // e.g. "Coffee"
+
+  // Relation with Property
+  properties PropertyService[]
+}
+
+// Join table: Property <-> AdditionalService
+model PropertyService {
+  id          String             @id @default(cuid())
+  propertyId  String
+  serviceId   String
+
+  property    Property           @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  service     AdditionalService  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([propertyId, serviceId]) // Avoid duplicates
+}
+model Booking {
+  id         String        @id @default(cuid())
+  checkIn    DateTime
+  checkOut   DateTime
+  totalPrice Float
+  status     BookingStatus @default(PENDING)
+  createdAt  DateTime      @default(now())
+
+  // Relations
+  guest      User     @relation(fields: [guestId], references: [id])
+  guestId    String
+  property   Property @relation(fields: [propertyId], references: [id])
+  propertyId String
+  payment    Payment?
+}
+
+model Payment {
+  id        String   @id @default(cuid())
+  amount    Float
+  method    String // Example: "Credit Card", "PayPal"
+  status    String // Example: "Paid", "Failed"
+  createdAt DateTime @default(now())
+
+  // Relations
+  booking   Booking @relation(fields: [bookingId], references: [id])
+  bookingId String  @unique
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int // 1 to 5
+  comment   String
+  createdAt DateTime @default(now())
+
+  // Relations
+  author     User     @relation(fields: [authorId], references: [id])
+  authorId   String
+  property   Property @relation(fields: [propertyId], references: [id])
+  propertyId String
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  // Relations
+  sender     User   @relation("SentMessages", fields: [senderId], references: [id])
+  senderId   String
+  receiver   User   @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  receiverId String
+}
+
+model User {
+  id               String     @id @default(cuid())
+  name             String?
+  email            String     @unique
+  archive          Boolean    @default(false)
+  createdAt        DateTime   @default(now())
+  emailVerified    DateTime?
+  image            String?
+  step             Int        @default(0)
+  phone            Int?
+  age              Int?
+  totalTimeSpent   Int?       @default(0) // Total time spent on the platform in seconds
+  password         String?
+  prenom           String?
+  qrSecret         String?
+  role             Role       @default(GUEST)
+  statut           Boolean    @default(true)
+  StatutUser       StatutUser @default(awaiting)
+  twoFactorEnabled Boolean    @default(true)
+  twoFactorSecret  String?
+  updatedAt        DateTime   @updatedAt
+  username         String     @unique
+  verified_email   String?
+
+  // Relations
+  properties       Property[] // Host's properties
+  bookings         Booking[] // Guest's bookings
+  reviews          Review[] // Reviews from guest
+  sentMessages     Message[]       @relation("SentMessages")
+  receivedMessages Message[]       @relation("ReceivedMessages")
+  accounts         Account[]
+  Authenticator    Authenticator[]
+  sessions         Session[]
+}
+
+model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([provider, providerAccountId])
+}
+
+model Session {
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+  user                 User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
+}
+
+enum Role {
+  ADMIN
+  HOST
+  GUEST
+}
+
+enum StatutUser {
+  subscribed
+  awaiting
+  verified
+}
+
+enum UserRole {
+  ADMIN
+  HOST
+  GUEST
+}
+
+enum PropertyType {
+  APARTMENT
+  HOUSE
+  VILLA
+  STUDIO
+  CHAMBREPRIVE
+  CABANE
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}

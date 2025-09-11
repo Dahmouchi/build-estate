@@ -1,0 +1,197 @@
+{
+  "products": {
+    "cart": "Add to Cart"
+  },
+
+  "header": {
+    "home": "Home",
+    "browse": "Browse",
+    "host": "Become a Host",
+    "contact": "Contact",
+    "login": "Login"
+  },
+  "hero": {
+    "title": "Find your",
+    "highlight": "perfect getaway",
+    "subtitle": "Discover unique stays, immersive adventures, and unforgettable experiences across the globe, carefully curated to make every journey truly special. Explore each property in stunning 3D, allowing you to walk through and experience the space online before you even arrive.",
+    "destination": "Destination",
+    "placeholderDestination": "Where are you going?",
+    "arrival": "Check-in",
+    "departure": "Check-out",
+    "guests": "Guests",
+    "placeholderGuests": "How many?",
+    "search": "Search",
+    "button": "View more properties"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "Book your perfect stay in a few simple steps",
+    "steps": [
+      {
+        "title": "Search",
+        "description": "Explore thousands of unique stays worldwide. Filter by price, amenities, and location to find your ideal stay.",
+        "img": "https://images.pexels.com/photos/261388/pexels-photo-261388.jpeg"
+      },
+      {
+        "title": "Book",
+        "description": "Instantly book or contact the host. Enjoy our secure payment system and full protection.",
+        "img": "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg"
+      },
+      {
+        "title": "Enjoy",
+        "description": "Experience authentic stays and create unforgettable memories in your temporary home.",
+        "img": "https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg"
+      },
+      {
+        "title": "Stay Protected",
+        "description": "Benefit from host guarantee and 24/7 customer support for a worry-free stay.",
+        "img": "https://images.pexels.com/photos/1838554/pexels-photo-1838554.jpeg"
+      }
+    ],
+    "cta": "Simple, fast, and secure"
+  },
+  "hostCTA": {
+    "headerLabel": "Become a host",
+    "title": "Turn your space into\nsource of income",
+    "description": "Share your space with travelers from around the world and generate extra income safely.",
+    "benefits": [
+      {
+        "title": "Attractive income",
+        "description": "Earn up to €500/month by renting your space"
+      },
+      {
+        "title": "Guaranteed protection",
+        "description": "Complete insurance and traveler verification"
+      },
+      {
+        "title": "Supportive community",
+        "description": "Join thousands of satisfied hosts"
+      }
+    ],
+    "ctaPrimary": "Become a host",
+    "ctaSecondary": "Learn more",
+    "stats": [
+      { "value": "€450", "label": "Average monthly income" },
+      { "value": "4.8★", "label": "Average host rating" },
+      { "value": "10K+", "label": "Active hosts" },
+      { "value": "95%", "label": "Satisfaction rate" },
+      { "value": "€2M+", "label": "Revenue generated" }
+    ]
+  },
+  "footer": {
+    "brandTitle": "StayNest",
+    "brandDesc": "Your trusted platform for authentic stays and unforgettable experiences around the world.",
+    "company": {
+      "title": "Company",
+      "links": ["About", "Careers", "Press", "Blog"]
+    },
+    "support": {
+      "title": "Support",
+      "links": ["Help Center", "Contact", "Security", "Status"]
+    },
+    "hosting": {
+      "title": "Hosting",
+      "links": ["Become a Host", "Host Guide", "Host Insurance", "Resources"]
+    },
+    "legal": {
+      "title": "Legal",
+      "links": ["Terms of Service", "Privacy Policy", "Cookies", "Legal Notice"]
+    },
+    "newsletter": {
+      "title": "Stay Informed",
+      "desc": "Get our latest offers and news straight to your inbox.",
+      "placeholder": "Your email address",
+      "subscribe": "Subscribe"
+    },
+    "rights": "© 2024 StayNest. All rights reserved."
+  },
+  "featuredProperties": {
+    "title": "Featured Properties",
+    "subtitle": "Discover a selection of our most highly rated accommodations",
+    "button": "View more properties"
+  },
+  "testimonials": {
+    "title": "What our travelers say",
+    "subtitle": "Thousands of travelers trust us for their stays",
+    "stats": [
+      { "value": "4.9", "label": "Average rating" },
+      { "value": "98%", "label": "Satisfied clients" },
+      { "value": "50K+", "label": "Positive reviews" },
+      { "value": "24/7", "label": "Customer support" }
+    ]
+  },
+
+  "faqData": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions about bookings, policies, and property features. Can't find what you're looking for? Contact our support team.",
+    "categories": {
+      "booking": "Bookings & Payments",
+      "cancellation": "Cancellations & Refunds",
+      "property": "Property Features",
+      "policy": "Policies & Guidelines",
+      "all": "All Questions"
+    },
+    "items": [
+      {
+        "id": "booking-1",
+        "category": "booking",
+        "question": "How do I make a reservation?",
+        "answer": "Simply select your desired dates, number of guests, and click 'Reserve'. You'll be guided through our secure booking process with instant confirmation."
+      },
+      {
+        "id": "booking-2",
+        "category": "booking",
+        "question": "What payment methods do you accept?",
+        "answer": "We accept all major credit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, and Google Pay. All transactions are secured with bank-level encryption."
+      },
+      {
+        "id": "booking-3",
+        "category": "booking",
+        "question": "When will I be charged?",
+        "answer": "A small deposit is charged immediately upon booking confirmation. The remaining balance is automatically charged 24 hours before your check-in date."
+      },
+      {
+        "id": "cancellation-1",
+        "category": "cancellation",
+        "question": "What is your cancellation policy?",
+        "answer": "Free cancellation up to 48 hours before check-in. Cancellations within 48 hours are subject to a 50% charge. No-shows result in full charge of the first night."
+      },
+      {
+        "id": "cancellation-2",
+        "category": "cancellation",
+        "question": "How do I cancel my reservation?",
+        "answer": "You can cancel your reservation through your account dashboard or by contacting our support team. Refunds are processed within 5-7 business days."
+      },
+      {
+        "id": "property-1",
+        "category": "property",
+        "question": "What amenities are included?",
+        "answer": "All properties include high-speed Wi-Fi, fully equipped kitchen, premium linens, toiletries, and 24/7 concierge support. Specific amenities vary by property."
+      },
+      {
+        "id": "property-2",
+        "category": "property",
+        "question": "Are pets allowed?",
+        "answer": "Pet policies vary by property. Look for the pet-friendly badge on listings. Additional pet fees may apply, typically $25-50 per night per pet."
+      },
+      {
+        "id": "property-3",
+        "category": "property",
+        "question": "Is there parking available?",
+        "answer": "Most properties offer complimentary parking. Check the property details for specific parking information, including garage, street, or valet options."
+      },
+      {
+        "id": "policy-1",
+        "category": "policy",
+        "question": "What are the check-in and check-out times?",
+        "answer": "Standard check-in is 3:00 PM and check-out is 11:00 AM. Early check-in and late check-out may be available upon request for an additional fee."
+      },
+      {
+        "id": "policy-2",
+        "category": "policy",
+        "question": "Do you require a security deposit?",
+        "answer": "A refundable security deposit of $200-500 is held on your card during your stay. This is released within 3-5 business days after checkout, pending property inspection."
+      }
+    ]
+  }
+}
