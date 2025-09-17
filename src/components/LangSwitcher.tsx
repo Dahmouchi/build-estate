@@ -17,7 +17,6 @@ interface Language {
 const languages: Language[] = [
   { key: "en", name: "English", dir: "ltr", countryCode: "GB" },
   { key: "fr", name: "Français", dir: "ltr", countryCode: "FR" },
-  { key: "ar", name: "العربية", dir: "rtl", countryCode: "SA" },
 ];
 
 export const LanguageSelector = () => {

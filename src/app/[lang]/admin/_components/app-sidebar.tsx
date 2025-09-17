@@ -26,7 +26,10 @@ import {
   LibraryBig,
   BookText,
   LayoutDashboard,
-  Search
+  Search,
+  CalendarRange,
+  Box,
+  Boxes
 } from "lucide-react";
 
 import { NavMain } from "./nav-main";
@@ -62,6 +65,16 @@ const datas = {
       title: "Accueil",
       url: "/admin/dashboard",
       icon: House,
+    },
+    {
+      title: "Appointments",
+      url: "/admin/dashboard/appointments",
+      icon: CalendarRange,
+    },
+     {
+      title: "Properties",
+      url: "/admin/dashboard/properties",
+      icon: Boxes,
     },
     {
       title: "Services",

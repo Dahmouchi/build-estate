@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
@@ -63,7 +64,7 @@ function GoogleIcon() {
   );
 }
 
-export default function AuthDialogButton() {
+export default function AuthDialogButton({lang}:any) {
   const [open, setOpen] = useState(false);
   const [phone, setPhone] = useState("");
   const [otpSent, setOtpSent] = useState(false);
@@ -95,9 +96,10 @@ export default function AuthDialogButton() {
         <DropdownMenuTrigger asChild>
            <Button
                   variant="outline"
-                  className="glass-search border-gray-200/50 hover:shadow-md transition-all duration-200 rounded-full px-3 py-2 h-auto bg-transparent"
+                  className="glass-search bg-white border-gray-200/50 hover:shadow-md transition-all duration-200 rounded-full px-3 py-2 h-auto "
                 >                 
             <AlignJustify className="h-5 w-5" />
+            
             {session && (
               <Avatar className="h-5 w-5 rounded-lg ml-2">
                 {session.user.image ? (
@@ -134,8 +136,8 @@ export default function AuthDialogButton() {
               <DropdownMenuItem
                 onClick={() =>
                   session.user.role === "HOST"
-                    ? router.push("/host/dashboard")
-                    : router.push("/host/inscription")
+                    ? router.push(`/${lang}/host/dashboard`)
+                    : router.push(`/${lang}/host/inscription`)
                 }
                 className="cursor-pointer"
               >
@@ -157,13 +159,13 @@ export default function AuthDialogButton() {
           ) : (
             <>
               {/* Connexion */}
-              <DropdownMenuItem onSelect={handleDialogOpen} className="cursor-pointer">
+              <DropdownMenuItem onSelect={handleDialogOpen} onClick={()=>setTa("login")} className="cursor-pointer">
                 <LogIn className="h-4 w-4 mr-2" />
                 Se connecter
               </DropdownMenuItem>
 
               {/* Inscription */}
-              <DropdownMenuItem onSelect={handleDialogOpen} className="cursor-pointer">
+              <DropdownMenuItem onSelect={handleDialogOpen} onClick={()=>setTa("register")} className="cursor-pointer">
                 <UserPlus className="h-4 w-4 mr-2" />
                 Créer un compte
               </DropdownMenuItem>
@@ -182,7 +184,7 @@ export default function AuthDialogButton() {
             </DialogDescription>
           </DialogHeader>
 
-          <Tabs defaultValue="login" className="w-full">
+          <Tabs defaultValue={ta} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
               <TabsTrigger value="login">Login</TabsTrigger>
               <TabsTrigger value="register">Register</TabsTrigger>

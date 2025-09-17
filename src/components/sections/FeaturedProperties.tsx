@@ -56,7 +56,7 @@ export default function FeaturedProperties({ data,lang,properties }: FeaturedPro
 
         {/* Properties Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {properties.slice(0,6).map((property, i) => (
+          {properties?.slice(0,6).map((property, i) => (
             <motion.div
               key={property.id}
               initial={{ opacity: 0, y: 50 }}

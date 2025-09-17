@@ -38,15 +38,15 @@ export async function getClientById(id: string) {
 export async function getProperties(id: string) {
   try {
     const client = await prisma.property.findMany({
-      where: { ownerId:id },
-      include:{
-        amenities:{
-          include:{
-            amenity:true,
-          }
+      where: { ownerId: id },
+      include: {
+        amenities: {
+          include: {
+            amenity: true,
+          },
         },
-        services:true,
-      }
+        services: true,
+      },
     });
     return client;
   } catch (error) {
@@ -75,11 +75,34 @@ interface PropertyFormData {
   bookingNotice?: string;
   seasonalPricing?: boolean;
   longStayDiscounts?: boolean;
-  images?: File[]; 
+  images?: File[];
   amenities?: string[];
   additionalServices?: string[];
 }
-
+interface PropertyFormDataEstate {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  password: string;
+  description?: string;
+  address?: string;
+  bedrooms?: number;
+  beds?: number;
+  bathrooms?: number;
+  propertyType: string;
+  basePrice?: number;
+  city?: string;
+  country?: string;
+  minStayDuration?: number;
+  maxStayDuration?: number;
+  bookingNotice?: string;
+  seasonalPricing?: boolean;
+  longStayDiscounts?: boolean;
+  images?: File[];
+  amenities?: string[];
+  additionalServices?: string[];
+}
 export async function createPropertyAndUpdateUser(formData: PropertyFormData) {
   try {
     const {
@@ -93,16 +116,9 @@ export async function createPropertyAndUpdateUser(formData: PropertyFormData) {
       bedrooms,
       beds,
       bathrooms,
-      maxGuests,
       propertyType,
-      pricePerNight,
       city,
       country,
-      minStayDuration,
-      maxStayDuration,
-      bookingNotice,
-      seasonalPricing,
-      longStayDiscounts,
       images,
       amenities,
       additionalServices,
@@ -149,16 +165,9 @@ export async function createPropertyAndUpdateUser(formData: PropertyFormData) {
         bedrooms,
         beds,
         bathrooms,
-        maxGuests,
         type: propertyType as any,
-        pricePerNight,
         city,
         country,
-        minStayDuration,
-        maxStayDuration,
-        bookingNotice,
-        seasonalPricing,
-        longStayDiscounts,
         images: uploadedPhotoUrls, // <-- store uploaded URLs
         ownerId: user.id,
       },
@@ -182,7 +191,156 @@ export async function createPropertyAndUpdateUser(formData: PropertyFormData) {
         })),
         skipDuplicates: true,
       });
-    } 
+    }
+
+    return { success: true, property, user };
+  } catch (error: any) {
+    console.error("❌ Error:", error);
+    return { success: false, error: error.message };
+  }
+}
+interface PropertyFormDataEstate {
+  title: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  password: string;
+  description?: string;
+  address?: string;
+  bedrooms?: number;
+  beds?: number;
+  bathrooms?: number;
+  totalRooms: number;
+  propertySize: number;
+  propertyType: string;
+  basePrice?: number;
+  city?: string;
+  country?: string;
+  matterportUrl: string;
+  bookingNotice?: string;
+  filmingDate?: string;
+  notes: string;
+  seasonalPricing?: boolean;
+  longStayDiscounts?: boolean;
+  images?: File[];
+  amenities?: string[];
+  additionalServices?: string[];
+}
+export async function createPropertyAndUpdateUserEstate(
+  formData: PropertyFormDataEstate
+) {
+  try {
+    const {
+      title,
+      firstName,
+      lastName,
+      phone,
+      email,
+      password,
+      description,
+      address,
+      bedrooms,
+      beds,
+      bathrooms,
+      propertyType,
+      city,
+      country,
+      basePrice,
+      notes,
+      totalRooms,
+      propertySize,
+      matterportUrl,
+      filmingDate,
+      images,
+      amenities,
+      additionalServices,
+    } = formData;
+
+    // Hash password if provided
+    let hashedPassword: string | undefined;
+    if (password) {
+      hashedPassword = await hash(password, 10);
+    }
+
+    // Update user
+    const user = await prisma.user.update({
+      where: { email },
+      data: {
+        name: `${lastName}`,
+        prenom: firstName,
+        phone: Number(phone),
+        ...(hashedPassword && { password: hashedPassword }),
+      },
+    });
+
+    // Upload photos to Cloudflare if any
+    const uploadedPhotoUrls: string[] = [];
+    if (images && images.length > 0) {
+      for (const photo of images) {
+        try {
+          // Assuming `photo` is a File object
+          const url = await uploadImage(photo as unknown as File);
+          uploadedPhotoUrls.push(url);
+        } catch (err) {
+          console.error("Erreur lors de l'upload d'une photo:", err);
+          // Optionally skip failed uploads instead of stopping
+        }
+      }
+    }
+
+    // Create property
+    const property = await prisma.property.create({
+      data: {
+        title: title || `${firstName} ${lastName} - Property`,
+        description,
+        address,
+        bedrooms,
+        beds,
+        bathrooms,
+        totalRooms,
+        propertySize,
+        type: propertyType as any,
+        basePrice,
+        city,
+        country,
+        matterportUrl,
+        images: uploadedPhotoUrls, // store uploaded URLs
+        ownerId: user.id,
+
+        appointments: {
+          create: {
+            scheduledAt: new Date(filmingDate!), // from formData
+            notes: notes || "",
+          },
+        },
+      },
+      include: {
+        appointments: true,
+      },
+    });
+
+    // Amenities
+    if (amenities && amenities.length > 0) {
+      await prisma.propertyAmenity.createMany({
+        data: amenities.map((amenityId: string) => ({
+          propertyId: property.id,
+          amenityId,
+        })),
+        skipDuplicates: true,
+      });
+    }
+
+    // Connect additional services
+    if (additionalServices && additionalServices.length > 0) {
+      await prisma.propertyService.createMany({
+        data: additionalServices.map((serviceId: string) => ({
+          propertyId: property.id,
+          serviceId,
+        })),
+        skipDuplicates: true,
+      });
+    }
 
     return { success: true, property, user };
   } catch (error: any) {

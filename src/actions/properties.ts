@@ -41,16 +41,10 @@ export async function createProperty(formData: PropertyFormData,userId:string) {
       bedrooms,
       beds,
       bathrooms,
-      maxGuests,
       propertyType,
-      pricePerNight,
       city,
       country,
-      minStayDuration,
-      maxStayDuration,
-      bookingNotice,
-      seasonalPricing,
-      longStayDiscounts,
+     
       googleMapsUrl,
       images,
       amenities,
@@ -84,19 +78,12 @@ export async function createProperty(formData: PropertyFormData,userId:string) {
         bedrooms,
         beds,
         bathrooms,
-        maxGuests,
         type: propertyType as any,
-        pricePerNight,
         city:city?.toLowerCase(),
         country,
         googleMapsUrl: locationData?.embedUrl || "",
         latitude: lat || null,
         longitude: lang || null,
-        minStayDuration,
-        maxStayDuration,
-        bookingNotice,
-        seasonalPricing,
-        longStayDiscounts,
         images: uploadedPhotoUrls, // <-- store uploaded URLs
         ownerId: userId,
 
@@ -139,16 +126,9 @@ export async function updateProperty(propertyId: string, formData: PropertyFormD
       bedrooms,
       beds,
       bathrooms,
-      maxGuests,
       propertyType,
-      pricePerNight,
       city,
       country,
-      minStayDuration,
-      maxStayDuration,
-      bookingNotice,
-      seasonalPricing,
-      longStayDiscounts,
       images,
       googleMapsUrl,
       amenities,
@@ -176,19 +156,12 @@ export async function updateProperty(propertyId: string, formData: PropertyFormD
         bedrooms,
         beds,
         bathrooms,
-        maxGuests,
         type: propertyType as any,
-        pricePerNight,
         city,
         country,
-        minStayDuration,
-        maxStayDuration,
-        bookingNotice,
-        seasonalPricing,
         googleMapsUrl: locationData?.embedUrl,
          latitude: parseFloat(locationData?.lat || "") || null,
         longitude:  parseFloat(locationData?.lng || "") || null,
-        longStayDiscounts,
         images: uploadedPhotoUrls.length > 0 ? uploadedPhotoUrls : undefined,
       },
     });
@@ -244,6 +217,8 @@ export async function getPropertyById(id:string) {
     return await prisma.property.findUnique({
       where:{id},
       include: {
+        owner:true,
+        appointments:true,
         services: {
           select:{
             id:true
@@ -272,7 +247,7 @@ export async function getPropertyByIdAllItems(id:string) {
           }
         },
         owner:true,
-        reviews:true,
+        appointments:true,
         amenities:{
           include:{
             amenity:true,

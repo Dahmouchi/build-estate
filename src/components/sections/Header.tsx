@@ -158,7 +158,7 @@ export default function Header({ data, currentLang }: HeaderProps) {
           <div className="flex items-center space-x-4">
            
              <LanguageSelector />
-            <AuthDialogButton />
+            <AuthDialogButton lang={currentLang}/>
             
           </div>
         </div>

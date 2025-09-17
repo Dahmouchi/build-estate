@@ -142,7 +142,7 @@ const LoginForm = () => {
             <div className="w-full flex items-center justify-start">
               <Button
                 type="submit"
-                className="w-full rounded-full py-3 bg-[#18375d] border-2 text-[#244B35] hover:bg-[#2d4562] cursor-pointer"
+                className="w-full rounded-full py-3 bg-[#244B35] border-2 text-[#E09B6B] hover:bg-[#28aa60] hover:text-black cursor-pointer"
               >
                 Soumettre
               </Button>

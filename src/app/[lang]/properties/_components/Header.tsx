@@ -46,15 +46,12 @@ export default function Header() {
     <motion.header
       initial={false}
       animate={scrolled ? 'scrolled' : 'top'}
-      variants={{
-        top: { backgroundColor: 'rgba(255, 255, 255, 0.8)', boxShadow: 'none', backdropFilter: 'blur(0px)' },
-        scrolled: { backgroundColor: 'rgba(255, 255, 255, 0.95)', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', backdropFilter: 'blur(8px)' }
-      }}
+     
       transition={{ duration: 0.3, ease: 'easeInOut' }}
       className="sticky top-0 z-50"
     >
       <div className=" mx-auto px-4 sm:px-6 lg:px-20 py-2 ">
-        <div className="flex justify-between items-center border bg-gradient-to-r  rounded-full px-4 py-4 shadow-md">
+        <div className="flex justify-between items-center border bg-white rounded-full px-4 py-4 shadow-md">
           {/* Logo */}
           <Link href={"/"}>
           <motion.div

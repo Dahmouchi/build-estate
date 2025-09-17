@@ -26,7 +26,7 @@ export default async function RootLayout({
     <SidebarInset className="dark:bg-slate-800 bg-white ">
         <Header/>
       <div className="flex flex-1 flex-col gap-4 lg:p-4 pt-0 bg-white dark:bg-slate-900 ">
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto overflow-y-auto">
           {children}
         </div>
       </div>

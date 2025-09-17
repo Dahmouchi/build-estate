@@ -9,11 +9,12 @@ import { toast } from 'react-toastify';
 import { listAmenities } from '@/actions/amenities';
 import { AdditionalService, Amenity } from '@/app/[lang]/admin/dashboard/services/page';
 import { listServices } from '@/actions/services';
+import { RealEstateRegistrationData } from '@/hooks/useRegistrationFormEstate';
 
 interface AmenitiesStepProps {
-  formData: HostRegistrationData;
+  formData: RealEstateRegistrationData;
   errors: Record<string, string>;
-  onUpdateField: (field: keyof HostRegistrationData, value: any) => void;
+  onUpdateField: (field: keyof RealEstateRegistrationData, value: any) => void;
   onNext: () => void;
   onPrev: () => void;
 }

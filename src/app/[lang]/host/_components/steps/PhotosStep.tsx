@@ -3,13 +3,13 @@
 import React, { useCallback, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { HostRegistrationData } from '@/lib/types';
 import { UploadCloud, XCircle } from 'lucide-react';
+import { RealEstateRegistrationData } from '@/hooks/useRegistrationFormEstate';
 
 interface PhotosStepProps {
-  formData: HostRegistrationData;
+  formData: RealEstateRegistrationData;
   errors: Record<string, string>;
-  onUpdateField: (field: keyof HostRegistrationData, value: any) => void;
+  onUpdateField: (field: keyof RealEstateRegistrationData, value: any) => void;
   onNext: () => void;
   onPrev: () => void;
 }
@@ -134,14 +134,6 @@ export const PhotosStep: React.FC<PhotosStepProps> = ({
             </ul>
           </div>
 
-          <div className="flex justify-between pt-6">
-            <Button variant="outline" onClick={onPrev}>
-              Précédent
-            </Button>
-            <Button onClick={onNext} className="bg-blue-600 hover:bg-blue-700">
-              Suivant
-            </Button>
-          </div>
         </CardContent>
       </Card>
     </div>
