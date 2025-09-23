@@ -1,18 +1,22 @@
-import { NextResponse } from "next/server"
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { NextRequest, NextResponse } from "next/server"
 import prisma from "@/lib/prisma";
 import { ReservationStatus } from "@prisma/client";
 
 // PATCH - Update reservation status
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+export async function PATCH(
+  req: NextRequest, 
+   { params }: { params: Promise<{ id: any }>; }) {
   try {
     const { status } = await req.json()
+    const resId = (await params).id;
 
     if (!Object.values(ReservationStatus).includes(status)) {
       return NextResponse.json({ success: false, error: "Invalid status" }, { status: 400 })
     }
 
     const reservation = await prisma.reservation.update({
-      where: { id: params.id },
+      where: { id: resId },
       data: { status },
     })
 
