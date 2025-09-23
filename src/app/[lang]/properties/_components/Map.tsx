@@ -71,7 +71,7 @@ function FlyToCity({
   return null;
 }
 
-export default function Map({ properties, selectedCity }: MapProps) {
+const Map=({ properties, selectedCity }: MapProps)=> {
   console.log(properties);
   return (
     <MapContainer
@@ -92,7 +92,7 @@ export default function Map({ properties, selectedCity }: MapProps) {
           <Popup>
             <div className="text-sm">
               <h3 className="font-bold">{p.title}</h3>
-              <p>{p.pricePerNight.toLocaleString()} MAD</p>
+              <p>{p.basePrice.toLocaleString()} MAD</p>
             </div>
           </Popup>
         </Marker>
@@ -103,3 +103,4 @@ export default function Map({ properties, selectedCity }: MapProps) {
     </MapContainer>
   );
 }
+export default Map

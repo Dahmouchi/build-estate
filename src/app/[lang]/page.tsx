@@ -8,6 +8,7 @@ import Footer from "@/components/sections/Footer";
 import { getDictionary } from "./dictionaries";
 import { FAQSection } from "@/components/sections/faq-section";
 import { listPropertis } from "@/actions/properties";
+import { AIAssistanceBot } from "@/components/ai-assistance-bot";
 
 export default async function Page({
   params,
@@ -27,6 +28,7 @@ export default async function Page({
       <HostCTA data={dict.hostCTA} />
       <FAQSection data={dict.faqData}/>
       <Footer data={dict.footer} />
+       <AIAssistanceBot />
     </main>
   );
 }
