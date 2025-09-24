@@ -1,32 +1,53 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import React, { useEffect } from "react";
-import Script from "next/script";
+import CTASection from "@/components/landing/cta-section";
+import Footer from "@/components/landing/footer";
+import React from "react";
+import Demo from "@/components/landing/Demo";
+import AboutUsSteps from "@/components/landing/about";
+import { AnimatedTestimonialsDemo } from "@/components/landing/testimonial";
+import HeroSection1 from "@/components/Hero";
+import Navbar1 from "@/components/landing/NavBar";
 
-const Page = () => {
-  useEffect(() => {
-    window.googleTranslateElementInit = () => {
-      new window.google.translate.TranslateElement(
-        { PageLanguage: "en" },
-        "google_translate_element"
-      );
-    };
-  }, []);
-  return <div>
-     {/* Google Translate */}
-    <Script
-     src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-    ></Script>
-{/* Google Translate CSS */}
-    <link
-     rel="stylesheet"
-     type="text/css"
-     href="https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.26tY-h6gH9w.L.W.O/am=CAM/d=0/rs=AN8SPfpIXxhebB2A47D9J-MACsXmFF6Vew/m=el_main_css"
-    />
-        <div id="google_translate_element" style={{ position: 'fixed', right: 0, top: 100, zIndex: 1000, backgroundColor:'rgba(255, 255, 255, 0.7)', borderRadius:'10px', padding:'5px' }}></div>
-<div>
-    hello world
-</div>
-</div>;
+const LandingPage = () => {
+ 
+  return (
+   <div className="min-h-screen bg-black text-white overflow-x-hidden font-montserrat">
+         {/* Navigation */}
+         <div className="flex justify-center w-full relative">
+           <Navbar1 />
+         </div>
+         {/* Main Content*/}
+         <main>
+           <section className="relative isolate overflow-hidden dark:bg-slate-950 bg-white text-white">
+             <section id="home">
+               <HeroSection1 />
+             </section>
+             {/* Process Section */}
+             <section id="demo">
+               {" "}
+               <Demo />
+             </section>
+             <section id="about">
+               <AboutUsSteps />
+             </section>
+            
+             <section>
+               <AnimatedTestimonialsDemo />
+             </section>
+           </section>
+           {/* CTA Section */}
+           <div className="h-fit relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
+             <section id="contact">
+               <CTASection />
+             </section>
+           </div>
+         </main>
+   
+         {/* Footer*/}
+         <Footer />
+       </div>
+  );
 };
 
-export default Page;
+export default LandingPage;

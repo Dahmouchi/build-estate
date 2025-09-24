@@ -36,7 +36,11 @@ const nextConfig: NextConfig = {
       {
         source: '/api/google/:path*',
         destination: 'https://maps.googleapis.com/maps/api/place/:path*',
-      }
+      },
+       {
+        source: "/api/:path*",
+        destination: "/api/:path*", // prevent locale prefix on API
+      },
     ];
   },
   // ... any other existing config
